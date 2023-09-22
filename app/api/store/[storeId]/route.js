@@ -4,24 +4,19 @@ import { NextResponse } from "next/server";
 import { mongooseConnect } from "@/libs/mongoose";
 
          
-export async function POST(request) {
-  const { userId } = auth();
-  const { storeName } = await request.json();
+export default async function handler(request) {
+  if (request.method === "POST") {
+    const { userId } = auth();
+    const { storeName } = await request.json();
   
-  await mongooseConnect();
-  const stores = await Store.create({ storeName, userId });
+    await mongooseConnect();
+    const stores = await Store.create({ storeName, userId });
   
-  // Wrap NextResponse in a Promise that resolves to a Response
-  return new Promise((resolve, reject) => {
-    resolve(
-      new Response(JSON.stringify(stores), {
-        status: 201,
-        headers: { "Content-Type": "application/json" },
-      })
-    );
-  });
+    return NextResponse.json(stores, { status: 201 });
+  } else {
+    return NextResponse.error("Method not allowed", { status: 405 });
+  }
 }
-
 export async function GET(request, params) {
     const { userId } = auth();
     await mongooseConnect();
