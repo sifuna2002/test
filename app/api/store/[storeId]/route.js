@@ -5,11 +5,16 @@ import { mongooseConnect } from "@/libs/mongoose";
 
          
 export async function POST(request) {
-    const { userId } = auth();
-    const { storeName } = await request.json();
-        await mongooseConnect();
-        const stores = await Store.create({ storeName, userId});
-        return NextResponse.json(stores, { status: 201 });
+  const { userId } = auth();
+  const { storeName } = await request.json();
+  
+  await mongooseConnect();
+  const stores = await Store.create({ storeName, userId });
+  
+  return new Response(JSON.stringify(stores), {
+    status: 201,
+    headers: { "Content-Type": "application/json" },
+  });
 }
 
 export async function GET(request, params) {
