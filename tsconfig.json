@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/store/route.js", "app/(root)/layout.jsx", "components/ui/heading.jsx", "app/(dashboard)/[storeId]/(routes)/page.jsx", "app/(dashboard)/[storeId]/(routes)/settings/components/settings-form.jsx", "app/(dashboard)/[storeId]/layout.tsx", "app/(dashboard)/[storeId]/(routes)/billboards/page.jsx", "app/(dashboard)/[storeId]/(routes)/billboards/[billboardId]/components/billboard-form.jsx", "app/(dashboard)/[storeId]/(routes)/products/[productId]/page.jsx", "app/(dashboard)/[storeId]/(routes)/products/[productId]/components/product-form.jsx", "app/api/[storeId]/products/route.js", "app/api/[storeId]/billboards/route.js", "app/api/[storeId]/billboards/[billboardId]/route.ts", "app/(dashboard)/[storeId]/(routes)/products/page.jsx", "app/(dashboard)/[storeId]/(routes)/billboards/[billboardId]/page.jsx", "app/api/[storeId]/products/[productId]/route.js", "app/api/store/[storeId]/route.js"],
+  "exclude": ["node_modules"]
+}
