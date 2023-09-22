@@ -11,9 +11,14 @@ export async function POST(request) {
   await mongooseConnect();
   const stores = await Store.create({ storeName, userId });
   
-  return new Response(JSON.stringify(stores), {
-    status: 201,
-    headers: { "Content-Type": "application/json" },
+  // Wrap NextResponse in a Promise that resolves to a Response
+  return new Promise((resolve, reject) => {
+    resolve(
+      new Response(JSON.stringify(stores), {
+        status: 201,
+        headers: { "Content-Type": "application/json" },
+      })
+    );
   });
 }
 
